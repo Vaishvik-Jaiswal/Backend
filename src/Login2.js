@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-
-const Login = () => {
+const Login2 = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', { email, password });
-      console.log(response.data); 
+    const response = await axios.post('http://localhost:5000/api/patient/signup/', { email, password });
+    console.log(response.data); 
     } catch (error) { 
       console.error('Login failed',error);
     }
@@ -39,4 +37,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login2;

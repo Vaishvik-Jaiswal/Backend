@@ -1,11 +1,11 @@
 // App.js
 import React from 'react';
-import Login from './Login';
+import LandingPage from './LandingPage.js';
 
 
 const App = () => {
   return (
-    <Login/>
+    <LandingPage />
   );
 };
 
