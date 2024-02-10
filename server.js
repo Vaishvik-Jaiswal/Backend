@@ -5,6 +5,8 @@ const cors = require('cors');
 const app = express();
 const Doctor = require('./backend/models/drschema');
 const Patient = require('./backend/models/patientschema');
+const drInfo = require('./backend/models/DrInfo'); 
+const patientInfo = require('./backend/models/PatientInfo'); 
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -41,6 +43,30 @@ app.post('/api/patient/signup', async (req, res) => {
     const newPatient = new Patient({ email, password });
     await newPatient.save();
     res.status(201).json(newPatient);
+  } catch (error) {
+    console.error('Patient signup failed', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+// Dr Info signup
+app.post('/api/drInfo/signup', async (req, res) => {
+  const { name, age, qualification, experience, address, about } = req.body;
+  try { 
+    const newDrInfo = new drInfo({ name , age , qualification , experience , address, about  });
+    await newDrInfo.save();
+    res.status(201).json(newDrInfo);
+  } catch (error) {
+    console.error('Doctor signup failed', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+// Patient Info signup
+app.post('/api/patientInfo/signup', async (req, res) => {
+  const { name, age, address } = req.body;
+  try { 
+    const newPatientInfo = new patientInfo({ name , age , address});
+    await newPatientInfo.save();
+    res.status(201).json(newPatientInfo);
   } catch (error) {
     console.error('Patient signup failed', error);
     res.status(500).json({ message: 'Internal server error' });
