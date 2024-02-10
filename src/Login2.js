@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 const Login2 = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,10 +14,10 @@ const Login2 = () => {
       console.error('Login failed',error);
     }
   };
-
+    
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label>Email:</label>
         <input
@@ -31,8 +33,12 @@ const Login2 = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
+      <p>Have an account already?</p>
+      <Link to="/reallogp">
+      <button>LogIn</button>
+      </Link>
     </div>
   );
 };
