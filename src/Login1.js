@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import DocForm from './DocForm.js';
 const Login1 = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -27,6 +28,7 @@ const Login1 = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/doctor/signup/', { email, password });
       console.log(response.data);
+      setLoggedIn(true); // Set loggedIn to true upon successful login
     } catch (error) {
       console.error('Login failed', error);
     }
@@ -34,26 +36,32 @@ const Login1 = () => {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
-        <button type="submit">Login</button>
-      </form>
+      {!loggedIn ? (
+        <div>
+          <h2>Login</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+            <label>Password:</label>
+            <input 
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      ) : (
+        <DocForm />
+      )}
     </div>
   );
 };
