@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const DocForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -135,7 +136,9 @@ const DocForm = () => {
           />
           {errors.address && <p>{errors.address}</p>}
         </div>
+        <Link to="/todaysapp"> 
         <button type="submit">Submit</button>
+        </Link>
       </form>
     </div>
   );

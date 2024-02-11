@@ -1,0 +1,29 @@
+.main{
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+
+ /* styles.css */
+table {
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+} 
+
+th { 
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5); 
+}

@@ -15,13 +15,25 @@ app.use(cors());
 mongoose.connect('mongodb+srv://aneyshamika:TheBeginners@atlascluster.ey9nerv.mongodb.net/', {
 }).then(() => {
   console.log("MongoDB connected successfully"); 
-}).catch((e) => {
+}).catch((e) => {   
   console.log("MongoDB connection error:", e);
 });
 
 app.get("/", (req, res) => {
-  res.send("BACKEND IS WORKING");
+  res.send("BACKEND IS WORKING"); 
 });
+
+app.get("/getDrInfo", (req, res) => {
+  drInfo.find()
+  .then(doctors => res.json(doctors))
+  .catch(err => res.json(err))
+}); 
+
+app.get("/getPatientInfo", (req, res) => {
+  patientInfo.find()
+  .then(patients => res.json(patients))
+  .catch(err => res.json(err))
+}); 
 
 // Doctor signup
 app.post('/api/doctor/signup', async (req, res) => {

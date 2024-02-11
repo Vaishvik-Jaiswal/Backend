@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ShowDocData from './ShowDocData';
 const PatientForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     age: '',
     address: ''
-  });
+  }); 
   const [errors, setErrors] = useState({});
-
+  const [submitted,setSubmitted]=useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,6 +36,7 @@ const PatientForm = () => {
       try {
         const response = await axios.post('http://localhost:5000/api/patientInfo/signup/', formData);
         console.log(response.data);
+        setSubmitted(true);
       } catch (error) {
         console.error('Form submission failed', error);  
       }
@@ -52,7 +54,7 @@ const PatientForm = () => {
   
   return (
     <div>
-      <h2>My Form</h2>
+      {!submitted ? (
       <form onSubmit={handleSubmit}>
         <div> 
           <label>Name:</label>
@@ -63,7 +65,7 @@ const PatientForm = () => {
             onChange={handleChange}
             required
           />
-          {errors.name && <p>{errors.name}</p>}
+          {errors.name && <p>{errors.name}</p>} 
         </div>
         <div>
           <label>Age:</label>
@@ -87,7 +89,9 @@ const PatientForm = () => {
           {errors.address && <p>{errors.address}</p>}
         </div>
         <button type="submit">Submit</button>
-      </form>
+      </form> ) : ( 
+        <ShowDocData />
+      ) }
     </div>
   );
 };

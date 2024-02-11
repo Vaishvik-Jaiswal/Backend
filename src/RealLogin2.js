@@ -6,11 +6,9 @@ function RealLogin2() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate=useNavigate();
-    // const [loggedIn,setLogIn]=useState(false);
-    // const [errors, setErrors] = useState({});
   
     const handleSubmit = async (e) => {
-      e.preventDefault();
+      e.preventDefault(); 
       
       try {
         const response = await axios.post('http://localhost:5000/api/patient/login/', { email, password });
