@@ -17,15 +17,15 @@ export const ShowDocData = () => {
        
   return( 
     <div>
-        <p>Hello</p>
+        <h2>SELECT YOUR DOCTOR</h2> 
         {doctors.map(doctor => (
           <div key={doctor._id}>
               <p> NAME : {doctor.name}</p>
               <p>CLINIC ADDRESS{doctor.address}</p>
             </div>
-          ))}
+          ))} 
     </div>
-  );
+  );  
 } 
 
 export default ShowDocData;

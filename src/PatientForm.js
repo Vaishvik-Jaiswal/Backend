@@ -54,6 +54,7 @@ const PatientForm = () => {
   
   return (
     <div>
+      <h2>Patient details:-</h2>
       {!submitted ? (
       <form onSubmit={handleSubmit}>
         <div> 

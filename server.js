@@ -15,7 +15,7 @@ app.use(cors());
 mongoose.connect('mongodb+srv://aneyshamika:TheBeginners@atlascluster.ey9nerv.mongodb.net/', {
 }).then(() => {
   console.log("MongoDB connected successfully"); 
-}).catch((e) => {   
+}).catch((e) => {    
   console.log("MongoDB connection error:", e);
 });
 
@@ -36,7 +36,7 @@ app.get("/getPatientInfo", (req, res) => {
 }); 
 
 // Doctor signup
-app.post('/api/doctor/signup', async (req, res) => {
+app.post('/api/doctor/signup', async (req, res) => { 
   const { email, password } = req.body;
   try { 
     const newDoctor = new Doctor({ email, password });

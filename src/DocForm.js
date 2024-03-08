@@ -70,7 +70,7 @@ const DocForm = () => {
   
   return (
     <div>
-      <h2>My Form</h2>
+      <h2>Doctor details:-</h2>
       <form onSubmit={handleSubmit}>
         <div> 
           <label>Name:</label>
